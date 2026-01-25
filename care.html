@@ -1,52 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Made With Care</title>
-    <link rel="stylesheet" href="output.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Good With Care</title>
+  <link rel="stylesheet" href="output.css">
+  <link rel="stylesheet" href="liquid-morph.css">
 </head>
+<script src="cursor.js"></script>
+
 <body class="bg-[#202020] text-[#EEE9E2] m-0 p-0 overflow-x-hidden">
 
-
-    <nav class=" fixed top-0 left-0 w-full z-50 flex justify-between items-center px-10 py-6">
-        <div class=" nav1 text-3xl font-bold">
-            <a href="#">Made<br>With<br>Care</a>
-        </div>
-        <div class=" nav2  flex gap-8 text-sm uppercase tracking-widest text-[#BEB8AF]">
-            <a href="#" class="hover:text-[#C36A2D] transition-colors duration-300">Shop</a>
-            <a href="#" class="hover:text-[#C36A2D] transition-colors duration-300">Wholesale</a>
-            <a href="#" class="hover:text-[#C36A2D] transition-colors duration-300">Catering</a>
-            <a href="#" class="hover:text-[#C36A2D] transition-colors duration-300">Donate</a>
-        </div>
-    </nav>
-
-    <section class="min-h-screen flex flex-col justify-center px-[6vw]">
-        <h1 class="text-[10vw] leading-[0.9] font-bold uppercase m-12">
-            <span class="hero-text animate-fade-up block">Gentle</span>
-            <span class="hero-text animate-fade-up block">Skincare</span>
-            <span class="hero-text animate-fade-up block">Thoughtfully Crafted</span>
-        </h1>
-    </section>
-
-    <section class="relative min-h-screen flex flex-col justify-center px-12 gap-24">
   
-  <div class="product relative group">
-    <h2 class="text-6xl font-bold uppercase cursor-pointer">Cleanser</h2>
-    <img src="your-image.png" class="product-image absolute top-0 left-0 w-96 h-96 object-cover rounded-xl opacity-0 pointer-events-none transition-all duration-500 ease-out" alt="Cleanser">
-  </div>
+  <nav class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-10 py-6 ">
+    <div class="nav1 text-3xl font-bold">
+      <a href="#">Good<br>With<br>Care</a>
+    </div>
+    <div class="nav2 flex gap-8 text-sm uppercase tracking-widest text-[#BEB8AF]">
+      <a href="#" class="hover:text-[#C36A2D] transition-colors duration-300">Shop</a>
+      <a href="#" class="hover:text-[#C36A2D] transition-colors duration-300">Wholesale</a>
+      <a href="#" class="hover:text-[#C36A2D] transition-colors duration-300">Catering</a>
+      <a href="#" class="hover:text-[#C36A2D] transition-colors duration-300">Donate</a>
+    </div>
+  </nav>
 
-  <div class="product relative group">
-    <h2 class="text-6xl font-bold uppercase cursor-pointer">Moisturizer</h2>
-    <img src="your-image2.png" class="product-image absolute top-0 left-0 w-96 h-96 object-cover rounded-xl opacity-0 pointer-events-none transition-all duration-500 ease-out" alt="Moisturizer">
-  </div>
+  
+  <section class="min-h-screen flex flex-col justify-center px-[6vw]">
+    <h1 class="text-[10vw] leading-[0.9] font-bold uppercase m-12">
+      <span class="hero-text animate-fade-up block">Gentle</span>
+      <span class="hero-text animate-fade-up block">Skincare</span>
+      <span class="hero-text animate-fade-up block">Thoughtfully Crafted</span>
+    </h1>
+  </section>
 
-  <div class="product relative group">
-    <h2 class="text-6xl font-bold uppercase cursor-pointer">Serum</h2>
-    <img src="your-image3.png" class="product-image absolute top-0 left-0 w-96 h-96 object-cover rounded-xl opacity-0 pointer-events-none transition-all duration-500 ease-out" alt="Serum">
-  </div>
-</section>
+  
+  <section class="relative min-h-screen flex flex-col justify-center px-12 gap-32 py-24">
 
+  
+    <div class="liquid-container group">
+      <div class="morph-blob"></div>
+      <h2 class="liquid-text">CLEANSER</h2>
+      <img src="images/cleanser.jpg.png" class="liquid-product" alt="Cleanser">
+    </div>
+
+    
+    <div class="liquid-container group">
+      <div class="morph-blob"></div>
+      <h2 class="liquid-text">MOISTURIZER</h2>
+      <img src="images/moisturizer.png" class="liquid-product" alt="Moisturizer">
+    </div>
+
+    
+    <div class="liquid-container group">
+      <div class="morph-blob"></div>
+      <h2 class="liquid-text">SERUM</h2>
+      <img src="images/serum.jpg.png" class="liquid-product" alt="Serum">
+    </div>
+
+  </section>
 
 </body>
+
 </html>
