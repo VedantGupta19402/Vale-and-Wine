@@ -1,45 +1,55 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
-  html {
-    scroll-behavior: smooth;
-  }
-
   body {
-    font-family: 'Inter', sans-serif;
-    overflow-x: hidden;
+    cursor: none;
   }
 }
 
 @layer utilities {
-  
-  @keyframes fadeUp {
-    from {
-      opacity: 0;
-      transform: translateY(50px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+  .cursor {
+    position: fixed;
+    width: 12px;
+    height: 12px;
+    background: #D4A59A;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transition: transform 0.15s ease;
+    mix-blend-mode: difference;
   }
 
-  .animate-fade-up {
-    animation: fadeUp 2s ease-out forwards;
-    opacity: 0;
+  .cursor-outline {
+    position: fixed;
+    width: 40px;
+    height: 40px;
+    border: 1px solid #D4A59A;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9998;
+    transition: all 0.2s ease;
+    mix-blend-mode: difference;
   }
 
-  .hero-text:nth-child(1) {
-    animation-delay: 0.2s;
+  @keyframes morph {
+    0%, 100% { border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; }
+    25% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+    50% { border-radius: 30% 60% 40% 60% / 50% 60% 30% 60%; }
+    75% { border-radius: 70% 30% 50% 50% / 40% 60% 50% 40%; }
   }
 
-  .hero-text:nth-child(2) {
-    animation-delay: 0.4s;
-  }
-
-  .hero-text:nth-child(3) {
-    animation-delay: 0.6s;
+  .organic-blob {
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    top: 10%;
+    right: 5%;
+    background: #A8B5A0;
+    opacity: 0.15;
+    border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+    animation: morph 20s ease-in-out infinite;
   }
 }

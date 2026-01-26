@@ -1,88 +1,48 @@
 // Custom Magnetic Cursor
-class MagneticCursor {
-    constructor() {
-        this.cursor = document.createElement('div');
-        this.cursorDot = document.createElement('div');
-        this.cursor.className = 'custom-cursor';
-        this.cursorDot.className = 'custom-cursor-dot';
-        document.body.appendChild(this.cursor);
-        document.body.appendChild(this.cursorDot);
-        
-        this.cursorPos = { x: 0, y: 0 };
-        this.dotPos = { x: 0, y: 0 };
-        
-        this.init();
-    }
-    
-    init() {
-        document.addEventListener('mousemove', (e) => {
-            this.cursorPos.x = e.clientX;
-            this.cursorPos.y = e.clientY;
-        });
-        
-        // Magnetic effect on interactive elements
-        const magneticElements = document.querySelectorAll('a, button, .liquid-container');
-        
-        magneticElements.forEach(el => {
-            el.addEventListener('mouseenter', () => {
-                this.cursor.style.transform = 'scale(1.5)';
-                this.cursor.style.borderColor = '#C36A2D';
-            });
-            
-            el.addEventListener('mouseleave', () => {
-                this.cursor.style.transform = 'scale(1)';
-                this.cursor.style.borderColor = '#EEE9E2';
-            });
-        });
-        
-        this.animate();
-    }
-    
-    animate() {
-        // Smooth follow effect
-        this.dotPos.x += (this.cursorPos.x - this.dotPos.x) * 0.15;
-        this.dotPos.y += (this.cursorPos.y - this.dotPos.y) * 0.15;
-        
-        this.cursor.style.left = this.cursorPos.x + 'px';
-        this.cursor.style.top = this.cursorPos.y + 'px';
-        
-        this.cursorDot.style.left = this.dotPos.x + 'px';
-        this.cursorDot.style.top = this.dotPos.y + 'px';
-        
-        requestAnimationFrame(() => this.animate());
-    }
-}
+// Custom Cursor
+const cursor = document.querySelector('.cursor');
+const cursorOutline = document.querySelector('.cursor-outline');
 
-// Smooth Scroll Animations
-class ScrollAnimations {
-    constructor() {
-        this.observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -100px 0px'
-        };
-        this.init();
-    }
-    
-    init() {
-        const animateElements = document.querySelectorAll('.liquid-container, nav a, .hero-text');
-        
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('scroll-reveal');
-                }
-            });
-        }, this.observerOptions);
-        
-        animateElements.forEach(el => {
-            el.classList.add('scroll-hidden');
-            observer.observe(el);
-        });
-    }
-}
+let mouseX = 0, mouseY = 0;
+let cursorX = 0, cursorY = 0;
+let outlineX = 0, outlineY = 0;
 
-// Initialize on page load
-document.addEventListener('DOMContentLoaded', () => {
-    new MagneticCursor();
-    new ScrollAnimations();
+document.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+});
+
+function animateCursor() {
+    // Smooth following effect
+    cursorX += (mouseX - cursorX) * 0.3;
+    cursorY += (mouseY - cursorY) * 0.3;
+    outlineX += (mouseX - outlineX) * 0.15;
+    outlineY += (mouseY - outlineY) * 0.15;
+
+    cursor.style.transform = `translate(${cursorX}px, ${cursorY}px)`;
+    cursorOutline.style.transform = `translate(${outlineX}px, ${outlineY}px)`;
+
+    requestAnimationFrame(animateCursor);
+}
+animateCursor();
+
+// Hover effects
+const hoverElements = document.querySelectorAll('a, button, .hero-image');
+hoverElements.forEach(el => {
+    el.addEventListener('mouseenter', () => {
+        document.body.classList.add('cursor-hover');
+    });
+    el.addEventListener('mouseleave', () => {
+        document.body.classList.remove('cursor-hover');
+    });
+});
+
+// Navbar scroll effect
+const navbar = document.querySelector('.navbar');
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 100) {
+        navbar.classList.add('scrolled');
+    } else {
+        navbar.classList.remove('scrolled');
+    }
 });
