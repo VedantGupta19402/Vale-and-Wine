@@ -11,63 +11,100 @@
 </head>
 <body class="bg-[#F7F5F2] text-[#2C2C2C] font-['Inter'] overflow-x-hidden">
 
+    <div class="loading-screen fixed inset-0 bg-[#2C2C2C] z-[9999] flex items-center justify-center">
+        <div class="text-center">
+            <h1 class="font-['Fraunces'] text-6xl text-[#F7F5F2] mb-8 loading-text">Good With Care</h1>
+            <div class="loading-bar"></div>
+        </div>
+    </div>
+
     <div class="cursor"></div>
     <div class="cursor-outline"></div>
+    <canvas id="cursorCanvas" class="fixed inset-0 pointer-events-none z-[9997]"></canvas>
+    <canvas id="particlesCanvas" class="fixed inset-0 pointer-events-none z-0"></canvas>
 
     <nav class="navbar fixed top-0 left-0 right-0 z-50 transition-all duration-500">
         <div class="max-w-[1400px] mx-auto px-8 lg:px-16 py-6 flex justify-between items-center">
-            <h1 class="font-['Fraunces'] text-2xl font-medium">Good With Care</h1>
+            <h1 class="font-['Fraunces'] text-2xl font-medium nav-logo">Good With Care</h1>
             <div class="hidden md:flex gap-10">
-                <a href="#products" class="text-sm tracking-wider text-[#8B7F76] hover:text-[#D4A59A] transition-colors duration-300 relative group">
+                <a href="#products" class="magnetic-link text-sm tracking-wider text-[#8B7F76] hover:text-[#D4A59A] transition-colors duration-300 relative group">
                     SHOP
                     <span class="absolute -bottom-1 left-0 w-0 h-px bg-[#D4A59A] group-hover:w-full transition-all duration-300"></span>
                 </a>
-                <a href="#about" class="text-sm tracking-wider text-[#8B7F76] hover:text-[#D4A59A] transition-colors duration-300 relative group">
+                <a href="#about" class="magnetic-link text-sm tracking-wider text-[#8B7F76] hover:text-[#D4A59A] transition-colors duration-300 relative group">
                     ABOUT
                     <span class="absolute -bottom-1 left-0 w-0 h-px bg-[#D4A59A] group-hover:w-full transition-all duration-300"></span>
                 </a>
-                <a href="#ingredients" class="text-sm tracking-wider text-[#8B7F76] hover:text-[#D4A59A] transition-colors duration-300 relative group">
+                <a href="#ingredients" class="magnetic-link text-sm tracking-wider text-[#8B7F76] hover:text-[#D4A59A] transition-colors duration-300 relative group">
                     INGREDIENTS
                     <span class="absolute -bottom-1 left-0 w-0 h-px bg-[#D4A59A] group-hover:w-full transition-all duration-300"></span>
                 </a>
             </div>
-            <button class="text-sm tracking-wider text-[#8B7F76] hover:text-[#D4A59A] transition-colors duration-300">CART (0)</button>
+            <button class="magnetic-link text-sm tracking-wider text-[#8B7F76] hover:text-[#D4A59A] transition-colors duration-300">CART (0)</button>
         </div>
     </nav>
 
     <section class="hero min-h-screen flex items-center relative overflow-hidden pt-32 pb-16 px-8 lg:px-16">
-        <div class="organic-blob"></div>
-        <div class="hero-bg absolute top-0 right-0 w-1/2 h-full bg-[#E8DED3] rounded-bl-[200px]"></div>
+        <div class="organic-blob parallax-blob"></div>
+        <div class="organic-blob-2"></div>
+        <div class="hero-bg absolute top-0 right-0 w-1/2 h-full bg-[#E8DED3] rounded-bl-[200px] parallax-bg"></div>
         
         <div class="max-w-[1400px] mx-auto grid lg:grid-cols-2 gap-16 items-center relative z-10 w-full">
             <div class="hero-content">
-                <p class="text-sm tracking-[0.2em] text-[#8B7F76] mb-6">GENTLE • EFFECTIVE • NATURAL</p>
+                <p class="text-sm tracking-[0.2em] text-[#8B7F76] mb-6 parallax-text" data-speed="0.3">GENTLE • EFFECTIVE • NATURAL</p>
+                
                 <h2 class="font-['Fraunces'] text-6xl lg:text-8xl leading-none mb-8">
-                    Skin<span class="block">care that</span>
-                    <span class="block italic text-[#D4A59A]">cares</span>
+                    <span class="text-reveal-wrapper" data-delay="0">
+                        <span class="text-reveal magnetic-text">Skin</span>
+                    </span>
+                    <span class="block">
+                        <span class="text-reveal-wrapper" data-delay="0.15">
+                            <span class="text-reveal magnetic-text">care that</span>
+                        </span>
+                    </span>
+                    <span class="block italic text-[#D4A59A]">
+                        <span class="text-reveal-wrapper" data-delay="0.3">
+                            <span class="text-reveal magnetic-text">cares</span>
+                        </span>
+                    </span>
                 </h2>
-                <p class="text-xl leading-relaxed text-[#8B7F76] mb-10 max-w-lg">
+                
+                <p class="text-xl leading-relaxed text-[#8B7F76] mb-10 max-w-lg parallax-text" data-speed="0.2">
                     Thoughtfully crafted formulas that nurture your skin with the gentleness it deserves and the results you desire.
                 </p>
                 <div class="flex gap-4">
-                    <button class="px-12 py-4 bg-[#2C2C2C] text-[#F7F5F2] rounded-full font-medium text-sm tracking-wider border-2 border-[#2C2C2C] hover:bg-transparent hover:text-[#2C2C2C] transition-all duration-400 relative overflow-hidden group">
+                    <button class="magnetic-btn px-12 py-4 bg-[#2C2C2C] text-[#F7F5F2] rounded-full font-medium text-sm tracking-wider border-2 border-[#2C2C2C] hover:bg-transparent hover:text-[#2C2C2C] transition-all duration-400 relative overflow-hidden group">
                         <span class="relative z-10">SHOP COLLECTION</span>
+                        <span class="btn-glow"></span>
                     </button>
-                    <button class="px-12 py-4 bg-transparent text-[#2C2C2C] rounded-full font-medium text-sm tracking-wider border-2 border-[#2C2C2C] hover:bg-[#2C2C2C] hover:text-[#F7F5F2] transition-all duration-400">
+                    <button class="magnetic-btn px-12 py-4 bg-transparent text-[#2C2C2C] rounded-full font-medium text-sm tracking-wider border-2 border-[#2C2C2C] hover:bg-[#2C2C2C] hover:text-[#F7F5F2] transition-all duration-400">
                         OUR STORY
                     </button>
                 </div>
             </div>
 
-            <div class="hero-image">
-                <div class="relative group">
-                    <img src="images/hero.jpg" 
-                         alt="Skincare Products" 
-                         class="w-full rounded-3xl shadow-[0_40px_80px_rgba(0,0,0,0.12)] group-hover:scale-[1.02] group-hover:rotate-1 transition-all duration-700">
-                    <div class="absolute inset-0 bg-gradient-to-t from-[#E8DED3]/20 to-transparent rounded-3xl pointer-events-none"></div>
+            <div class="hero-image parallax-image" id="tiltImage" data-speed="0.5">
+                <div class="relative group" style="perspective: 1000px;">
+                    <div class="tilt-inner" style="transition: transform 0.3s ease-out; transform-style: preserve-3d;">
+                        <img src="https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd" 
+                             alt="Skincare Products" 
+                             loading="eager"
+                             class="w-full rounded-3xl shadow-[0_40px_80px_rgba(0,0,0,0.12)] image-float"
+                             style="transform: translateZ(50px);">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#E8DED3]/20 to-transparent rounded-3xl pointer-events-none shine-effect" style="transform: translateZ(20px);"></div>
+                    </div>
                 </div>
             </div>
         </div>
+
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 scroll-indicator">
+            <div class="w-6 h-10 border-2 border-[#8B7F76] rounded-full flex justify-center pt-2">
+                <div class="w-1 h-3 bg-[#8B7F76] rounded-full scroll-dot"></div>
+            </div>
+        </div>
     </section>
+
+    <script src="cursor.js"></script>
+
 </body>
 </html>
