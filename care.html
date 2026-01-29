@@ -1,392 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Good With Care — Gentle Skincare, Thoughtfully Crafted</title>
-    <link rel="stylesheet" href="output.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css">
 </head>
-<body class="bg-[#F7F5F2] text-[#2C2C2C] font-['Inter'] overflow-x-hidden">
 
-    <div class="loading-screen fixed inset-0 bg-[#2C2C2C] z-[9999] flex items-center justify-center">
-        <div class="text-center">
-            <h1 class="font-['Fraunces'] text-6xl text-[#F7F5F2] mb-8 loading-text">Good With Care</h1>
+<body>
+
+    <!-- Loading Screen -->
+    <div class="loading-screen">
+        <div class="loading-content">
+            <h1 class="loading-title">Good With Care</h1>
             <div class="loading-bar"></div>
         </div>
     </div>
 
-    <div class="cursor-dot"></div>
-    <div class="cursor-ring"></div>
+    <!-- Custom Cursor -->
+    <div class="cursor"></div>
+    <div class="cursor-outline"></div>
     <div class="cursor-text"></div>
-    <canvas id="cursorCanvas" class="fixed inset-0 pointer-events-none z-[9997]"></canvas>
-    <canvas id="particlesCanvas" class="fixed inset-0 pointer-events-none z-0"></canvas>
 
-    <nav class="navbar fixed top-0 left-0 right-0 z-50 transition-all duration-500">
-        <div class="max-w-[1400px] mx-auto px-8 lg:px-16 py-6 flex justify-between items-center">
-            <h1 class="font-['Fraunces'] text-2xl font-medium nav-logo">Good With Care</h1>
-            <div class="hidden md:flex gap-10">
-                <a href="#home" class="magnetic-link text-sm tracking-wider text-[#8B7F76] hover:text-[#D4A59A] transition-colors duration-300 relative group">
-                    HOME
-                    <span class="absolute -bottom-1 left-0 w-0 h-px bg-[#D4A59A] group-hover:w-full transition-all duration-300"></span>
-                </a>
-                <a href="#products" class="magnetic-link text-sm tracking-wider text-[#8B7F76] hover:text-[#D4A59A] transition-colors duration-300 relative group">
-                    SHOP
-                    <span class="absolute -bottom-1 left-0 w-0 h-px bg-[#D4A59A] group-hover:w-full transition-all duration-300"></span>
-                </a>
-                <a href="#about" class="magnetic-link text-sm tracking-wider text-[#8B7F76] hover:text-[#D4A59A] transition-colors duration-300 relative group">
-                    ABOUT
-                    <span class="absolute -bottom-1 left-0 w-0 h-px bg-[#D4A59A] group-hover:w-full transition-all duration-300"></span>
-                </a>
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 19V5M5 12l7-7 7 7" />
+        </svg>
+    </button>
+
+    <!-- PAGE 1: Navigation -->
+    <nav class="py-6 px-8 lg:px-16">
+        <div class="flex justify-between items-center max-w-7xl mx-auto">
+            <h1 class="text-2xl font-medium">Good With Care</h1>
+            <div class="hidden md:flex gap-10 text-sm tracking-wide">
+                <a href="#products" class="nav-link">SHOP</a>
+                <a href="#about" class="nav-link">ABOUT</a>
+                <a href="#ingredients" class="nav-link">INGREDIENTS</a>
             </div>
-            <button class="magnetic-link text-sm tracking-wider text-[#8B7F76] hover:text-[#D4A59A] transition-colors duration-300">CART (0)</button>
+            <button class="text-sm tracking-wide hover:text-opacity-60 transition-all cart-btn flex items-center gap-2">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="9" cy="21" r="1"></circle>
+                    <circle cx="20" cy="21" r="1"></circle>
+                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                </svg>
+                <span id="cartCount">0</span>
+            </button>
         </div>
     </nav>
 
-    <section id="home" class="hero min-h-screen flex items-center relative overflow-hidden pt-32 pb-16 px-8 lg:px-16">
-        <div class="organic-blob parallax-blob"></div>
-        <div class="organic-blob-2"></div>
-        <div class="hero-bg absolute top-0 right-0 w-1/2 h-full bg-[#E8DED3] rounded-bl-[200px] parallax-bg"></div>
-        
-        <div class="max-w-[1400px] mx-auto grid lg:grid-cols-2 gap-16 items-center relative z-10 w-full">
-            <div class="hero-content">
-                <p class="text-sm tracking-[0.2em] text-[#8B7F76] mb-6 parallax-text" data-speed="0.3">GENTLE • EFFECTIVE • NATURAL</p>
-                
-                <h2 class="font-['Fraunces'] text-6xl lg:text-8xl leading-none mb-8">
-                    <span class="text-reveal-wrapper" data-delay="0">
-                        <span class="text-reveal magnetic-text">Skin</span>
-                    </span>
-                    <span class="block">
-                        <span class="text-reveal-wrapper" data-delay="0.15">
-                            <span class="text-reveal magnetic-text">care that</span>
-                        </span>
-                    </span>
-                    <span class="block italic text-[#D4A59A]">
-                        <span class="text-reveal-wrapper" data-delay="0.3">
-                            <span class="text-reveal magnetic-text">cares</span>
-                        </span>
-                    </span>
+    <!-- PAGE 2: Hero Section -->
+    <section class="hero px-8 lg:px-16 relative">
+        <div class="organic-blob blob-1" style="width: 600px; height: 600px; top: 10%; right: 5%;"></div>
+        <div class="organic-blob blob-2" style="width: 400px; height: 400px; bottom: 10%; left: 5%;"></div>
+
+        <div class="hero-bg parallax-layer" data-speed="0.5"></div>
+
+        <div class="max-w-7xl mx-auto relative z-10 grid lg:grid-cols-2 gap-16 items-center">
+            <div>
+                <p class="text-sm tracking-widest text-opacity-60 mb-6 reveal">GENTLE • EFFECTIVE • NATURAL</p>
+                <h2 class="text-6xl lg:text-8xl mb-8 leading-none reveal" style="transition-delay: 0.1s">
+                    Skin<span class="block">care that</span>
+                    <span class="block italic" style="color: #D4A59A;">cares</span>
                 </h2>
-                
-                <p class="text-xl leading-relaxed text-[#8B7F76] mb-10 max-w-lg parallax-text" data-speed="0.2">
-                    Thoughtfully crafted formulas that nurture your skin with the gentleness it deserves and the results you desire.
+                <p class="text-xl text-opacity-70 mb-10 max-w-lg leading-relaxed reveal" style="transition-delay: 0.2s">
+                    Thoughtfully crafted formulas that nurture your skin with the gentleness it deserves and the results
+                    you desire.
                 </p>
-                <div class="flex gap-4">
-                    <a href="#products" class="magnetic-btn px-12 py-4 bg-[#2C2C2C] text-[#F7F5F2] rounded-full font-medium text-sm tracking-wider border-2 border-[#2C2C2C] hover:bg-transparent hover:text-[#2C2C2C] transition-all duration-400 relative overflow-hidden group">
-                        <span class="relative z-10">SHOP COLLECTION</span>
-                        <span class="btn-glow"></span>
-                    </a>
-                    <a href="#about" class="magnetic-btn px-12 py-4 bg-transparent text-[#2C2C2C] rounded-full font-medium text-sm tracking-wider border-2 border-[#2C2C2C] hover:bg-[#2C2C2C] hover:text-[#F7F5F2] transition-all duration-400">
-                        OUR STORY
-                    </a>
+                <div class="flex gap-4 reveal" style="transition-delay: 0.3s">
+                    <button class="btn btn-primary ripple-btn">SHOP COLLECTION</button>
+                    <button class="btn btn-secondary ripple-btn">OUR STORY</button>
                 </div>
             </div>
-
-            <div class="hero-image parallax-image" id="tiltImage" data-speed="0.5">
-                <div class="relative group" style="perspective: 1000px;">
-                    <div class="tilt-inner" style="transition: transform 0.3s ease-out; transform-style: preserve-3d;">
-                        <img src="https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=700&h=900&fit=crop&q=80" 
-                             alt="Skincare Products" 
-                             loading="eager"
-                             class="w-full rounded-3xl shadow-[0_40px_80px_rgba(0,0,0,0.12)] image-float"
-                             style="transform: translateZ(50px);">
-                        <div class="absolute inset-0 bg-gradient-to-t from-[#E8DED3]/20 to-transparent rounded-3xl pointer-events-none shine-effect" style="transform: translateZ(20px);"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 scroll-indicator">
-            <div class="w-6 h-10 border-2 border-[#8B7F76] rounded-full flex justify-center pt-2">
-                <div class="w-1 h-3 bg-[#8B7F76] rounded-full scroll-dot"></div>
+            <div class="relative reveal hero-image-wrapper" style="transition-delay: 0.4s">
+                <img src="/images/hero..png" alt="Hero Product" class="rounded-3xl shadow-2xl hero-image floating-image"
+                    style="box-shadow: 0 40px 80px rgba(0,0,0,0.12);">
             </div>
         </div>
     </section>
 
-    <section id="products" class="py-32 px-8 lg:px-16">
-        <div class="max-w-[1400px] mx-auto">
-            <div class="mb-16 reveal text-center">
-                <p class="text-sm tracking-[0.2em] text-[#8B7F76] mb-4">OUR COLLECTION</p>
-                <h3 class="font-['Fraunces'] text-5xl lg:text-6xl mb-6">Simple. Effective. Pure.</h3>
-                <p class="text-xl text-[#8B7F76] max-w-2xl mx-auto">Three essential steps to healthy, radiant skin</p>
-            </div>
-
-            <div class="grid lg:grid-cols-3 gap-8">
-                <div class="product-card reveal bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl hover:-translate-y-3 transition-all duration-600 group">
-                    <div class="aspect-[3/4] overflow-hidden relative">
-                        <img src="https://images.unsplash.com/photo-1556229010-aa552e4e0b35?w=500&h=700&fit=crop&q=80" 
-                             alt="Gentle Cleanser" 
-                             loading="lazy"
-                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-800">
-                        <div class="absolute inset-0 bg-gradient-to-t from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                    </div>
-                    <div class="p-8">
-                        <p class="text-xs tracking-[0.15em] text-[#8B7F76] mb-3">STEP ONE — CLEANSE</p>
-                        <h4 class="font-['Fraunces'] text-2xl mb-4">Gentle Cleanser</h4>
-                        <p class="text-sm leading-relaxed text-[#8B7F76] mb-6">
-                            A mild, pH-balanced formula that removes impurities while preserving your skin's natural moisture.
-                        </p>
-                        <div class="flex justify-between items-center mb-4">
-                            <span class="font-['Fraunces'] text-2xl font-light">$28</span>
-                            <button class="px-6 py-3 border-2 border-[#2C2C2C] rounded-full text-xs tracking-wider hover:bg-[#2C2C2C] hover:text-white transition-all duration-300">
-                                ADD TO CART
-                            </button>
-                        </div>
-                        <div class="flex gap-4">
-                            <span class="text-xs text-[#8B7F76]">✓ Natural</span>
-                            <span class="text-xs text-[#8B7F76]">✓ Vegan</span>
-                            <span class="text-xs text-[#8B7F76]">✓ Cruelty-free</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="product-card reveal bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl hover:-translate-y-3 transition-all duration-600 group">
-                    <div class="aspect-[3/4] overflow-hidden relative">
-                        <img src="https://images.unsplash.com/photo-1556228720-da4e85f25e15?w=500&h=700&fit=crop&q=80" 
-                             alt="Daily Moisturizer" 
-                             loading="lazy"
-                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-800">
-                        <div class="absolute inset-0 bg-gradient-to-t from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                    </div>
-                    <div class="p-8">
-                        <p class="text-xs tracking-[0.15em] text-[#8B7F76] mb-3">STEP TWO — HYDRATE</p>
-                        <h4 class="font-['Fraunces'] text-2xl mb-4">Daily Moisturizer</h4>
-                        <p class="text-sm leading-relaxed text-[#8B7F76] mb-6">
-                            Lightweight yet deeply nourishing. Locks in hydration for soft, supple skin all day.
-                        </p>
-                        <div class="flex justify-between items-center mb-4">
-                            <span class="font-['Fraunces'] text-2xl font-light">$42</span>
-                            <button class="px-6 py-3 border-2 border-[#2C2C2C] rounded-full text-xs tracking-wider hover:bg-[#2C2C2C] hover:text-white transition-all duration-300">
-                                ADD TO CART
-                            </button>
-                        </div>
-                        <div class="flex gap-4">
-                            <span class="text-xs text-[#8B7F76]">✓ Natural</span>
-                            <span class="text-xs text-[#8B7F76]">✓ Vegan</span>
-                            <span class="text-xs text-[#8B7F76]">✓ Cruelty-free</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="product-card reveal bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl hover:-translate-y-3 transition-all duration-600 group">
-                    <div class="aspect-[3/4] overflow-hidden relative">
-                        <img src="https://images.unsplash.com/photo-1571875257727-256c39da42af?w=500&h=700&fit=crop&q=80" 
-                             alt="Brightening Serum" 
-                             loading="lazy"
-                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-800">
-                        <div class="absolute inset-0 bg-gradient-to-t from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                        <div class="absolute top-4 right-4 bg-[#D4A59A] text-white px-3 py-1 rounded-full text-xs font-medium">
-                            BESTSELLER
-                        </div>
-                    </div>
-                    <div class="p-8">
-                        <p class="text-xs tracking-[0.15em] text-[#8B7F76] mb-3">STEP THREE — RENEW</p>
-                        <h4 class="font-['Fraunces'] text-2xl mb-4">Brightening Serum</h4>
-                        <p class="text-sm leading-relaxed text-[#8B7F76] mb-6">
-                            Vitamin C and hyaluronic acid work together to brighten, firm, and rejuvenate.
-                        </p>
-                        <div class="flex justify-between items-center mb-4">
-                            <span class="font-['Fraunces'] text-2xl font-light">$56</span>
-                            <button class="px-6 py-3 border-2 border-[#2C2C2C] rounded-full text-xs tracking-wider hover:bg-[#2C2C2C] hover:text-white transition-all duration-300">
-                                ADD TO CART
-                            </button>
-                        </div>
-                        <div class="flex gap-4">
-                            <span class="text-xs text-[#8B7F76]">✓ Natural</span>
-                            <span class="text-xs text-[#8B7F76]">✓ Vegan</span>
-                            <span class="text-xs text-[#8B7F76]">✓ Cruelty-free</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="product-card reveal bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl hover:-translate-y-3 transition-all duration-600 group">
-                    <div class="aspect-[3/4] overflow-hidden relative">
-                        <img src="https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?w=500&h=700&fit=crop&q=80" 
-                             alt="Night Cream" 
-                             loading="lazy"
-                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-800">
-                        <div class="absolute inset-0 bg-gradient-to-t from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                    </div>
-                    <div class="p-8">
-                        <p class="text-xs tracking-[0.15em] text-[#8B7F76] mb-3">NIGHT CARE</p>
-                        <h4 class="font-['Fraunces'] text-2xl mb-4">Restorative Night Cream</h4>
-                        <p class="text-sm leading-relaxed text-[#8B7F76] mb-6">
-                            Rich overnight treatment that repairs and rejuvenates while you sleep for morning radiance.
-                        </p>
-                        <div class="flex justify-between items-center mb-4">
-                            <span class="font-['Fraunces'] text-2xl font-light">$48</span>
-                            <button class="px-6 py-3 border-2 border-[#2C2C2C] rounded-full text-xs tracking-wider hover:bg-[#2C2C2C] hover:text-white transition-all duration-300">
-                                ADD TO CART
-                            </button>
-                        </div>
-                        <div class="flex gap-4">
-                            <span class="text-xs text-[#8B7F76]">✓ Natural</span>
-                            <span class="text-xs text-[#8B7F76]">✓ Vegan</span>
-                            <span class="text-xs text-[#8B7F76]">✓ Cruelty-free</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="product-card reveal bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl hover:-translate-y-3 transition-all duration-600 group">
-                    <div class="aspect-[3/4] overflow-hidden relative">
-                        <img src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=500&h=700&fit=crop&q=80" 
-                             alt="Eye Cream" 
-                             loading="lazy"
-                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-800">
-                        <div class="absolute inset-0 bg-gradient-to-t from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                    </div>
-                    <div class="p-8">
-                        <p class="text-xs tracking-[0.15em] text-[#8B7F76] mb-3">TARGETED CARE</p>
-                        <h4 class="font-['Fraunces'] text-2xl mb-4">Revitalizing Eye Cream</h4>
-                        <p class="text-sm leading-relaxed text-[#8B7F76] mb-6">
-                            Gentle formula that reduces puffiness, dark circles, and fine lines around delicate eye area.
-                        </p>
-                        <div class="flex justify-between items-center mb-4">
-                            <span class="font-['Fraunces'] text-2xl font-light">$38</span>
-                            <button class="px-6 py-3 border-2 border-[#2C2C2C] rounded-full text-xs tracking-wider hover:bg-[#2C2C2C] hover:text-white transition-all duration-300">
-                                ADD TO CART
-                            </button>
-                        </div>
-                        <div class="flex gap-4">
-                            <span class="text-xs text-[#8B7F76]">✓ Natural</span>
-                            <span class="text-xs text-[#8B7F76]">✓ Vegan</span>
-                            <span class="text-xs text-[#8B7F76]">✓ Cruelty-free</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="product-card reveal bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl hover:-translate-y-3 transition-all duration-600 group">
-                    <div class="aspect-[3/4] overflow-hidden relative">
-                        <img src="https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=500&h=700&fit=crop&q=80" 
-                             alt="Face Mask" 
-                             loading="lazy"
-                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-800">
-                        <div class="absolute inset-0 bg-gradient-to-t from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                        <div class="absolute top-4 right-4 bg-[#A8B5A0] text-white px-3 py-1 rounded-full text-xs font-medium">
-                            NEW
-                        </div>
-                    </div>
-                    <div class="p-8">
-                        <p class="text-xs tracking-[0.15em] text-[#8B7F76] mb-3">WEEKLY TREATMENT</p>
-                        <h4 class="font-['Fraunces'] text-2xl mb-4">Purifying Clay Mask</h4>
-                        <p class="text-sm leading-relaxed text-[#8B7F76] mb-6">
-                            Deep-cleansing treatment with natural clays that detoxifies pores and refines skin texture.
-                        </p>
-                        <div class="flex justify-between items-center mb-4">
-                            <span class="font-['Fraunces'] text-2xl font-light">$32</span>
-                            <button class="px-6 py-3 border-2 border-[#2C2C2C] rounded-full text-xs tracking-wider hover:bg-[#2C2C2C] hover:text-white transition-all duration-300">
-                                ADD TO CART
-                            </button>
-                        </div>
-                        <div class="flex gap-4">
-                            <span class="text-xs text-[#8B7F76]">✓ Natural</span>
-                            <span class="text-xs text-[#8B7F76]">✓ Vegan</span>
-                            <span class="text-xs text-[#8B7F76]">✓ Cruelty-free</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="about" class="py-32 px-8 lg:px-16 bg-[#E8DED3]">
-        <div class="max-w-4xl mx-auto text-center reveal">
-            <h3 class="font-['Fraunces'] text-5xl lg:text-6xl font-light leading-tight mb-8">
-                We believe skincare should be simple, honest, and effective
-            </h3>
-            <p class="text-xl text-[#8B7F76] leading-relaxed mb-12">
-                Every formula is crafted with clean, science-backed ingredients. No harsh chemicals, no false promises—just thoughtful care for your skin.
-            </p>
-            <button class="magnetic-btn px-12 py-4 bg-[#2C2C2C] text-[#F7F5F2] rounded-full font-medium text-sm tracking-wider hover:bg-[#D4A59A] hover:text-[#2C2C2C] transition-all duration-400">
-                LEARN MORE
-            </button>
-        </div>
-    </section>
-
-    <section class="py-32 px-8 lg:px-16">
-        <div class="max-w-[1400px] mx-auto">
-            <div class="text-center mb-20 reveal">
-                <h3 class="font-['Fraunces'] text-5xl lg:text-6xl mb-6">Nature meets science</h3>
-                <p class="text-xl text-[#8B7F76] max-w-2xl mx-auto">Every ingredient is carefully selected for its proven benefits</p>
-            </div>
-
-            <div class="grid md:grid-cols-4 gap-6">
-                <div class="reveal bg-white p-12 rounded-2xl text-center hover:bg-[#E8DED3] transition-all duration-500 group">
-                    <div class="text-5xl mb-4 grayscale group-hover:grayscale-0 transition-all duration-500">🌿</div>
-                    <h5 class="text-lg font-medium mb-2">Aloe Vera</h5>
-                    <p class="text-sm text-[#8B7F76]">Soothes & hydrates</p>
-                </div>
-
-                <div class="reveal bg-white p-12 rounded-2xl text-center hover:bg-[#E8DED3] transition-all duration-500 group">
-                    <div class="text-5xl mb-4 grayscale group-hover:grayscale-0 transition-all duration-500">🍊</div>
-                    <h5 class="text-lg font-medium mb-2">Vitamin C</h5>
-                    <p class="text-sm text-[#8B7F76]">Brightens & firms</p>
-                </div>
-
-                <div class="reveal bg-white p-12 rounded-2xl text-center hover:bg-[#E8DED3] transition-all duration-500 group">
-                    <div class="text-5xl mb-4 grayscale group-hover:grayscale-0 transition-all duration-500">💧</div>
-                    <h5 class="text-lg font-medium mb-2">Hyaluronic Acid</h5>
-                    <p class="text-sm text-[#8B7F76]">Plumps & moisturizes</p>
-                </div>
-
-                <div class="reveal bg-white p-12 rounded-2xl text-center hover:bg-[#E8DED3] transition-all duration-500 group">
-                    <div class="text-5xl mb-4 grayscale group-hover:grayscale-0 transition-all duration-500">🌸</div>
-                    <h5 class="text-lg font-medium mb-2">Rose Extract</h5>
-                    <p class="text-sm text-[#8B7F76]">Calms & nourishes</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="py-32 px-8 lg:px-16">
-        <div class="max-w-5xl mx-auto">
-            <div class="reveal bg-gradient-to-br from-[#D4A59A] to-[#C9968C] text-white rounded-[40px] p-16 lg:p-24 relative overflow-hidden">
-                <p class="font-['Fraunces'] text-3xl lg:text-5xl font-light leading-relaxed relative z-10">
-                    We believe skincare should be simple, honest, and effective. No harsh chemicals, no false promises—just thoughtful formulas that work.
-                </p>
-                <p class="mt-8 text-xl opacity-90">— The Good With Care Team</p>
-                <div class="absolute text-[20rem] font-['Fraunces'] opacity-10 top-[-4rem] left-8">"</div>
-            </div>
-        </div>
-    </section>
-
-    <section class="py-32 px-8 lg:px-16">
-        <div class="max-w-[1400px] mx-auto grid md:grid-cols-3 gap-16 text-center">
-            <div class="reveal">
-                <p class="font-['Fraunces'] text-7xl font-light text-[#D4A59A] mb-4">15K+</p>
-                <p class="text-xl">Happy customers</p>
-            </div>
-            <div class="reveal">
-                <p class="font-['Fraunces'] text-7xl font-light text-[#D4A59A] mb-4">100%</p>
-                <p class="text-xl">Natural ingredients</p>
-            </div>
-            <div class="reveal">
-                <p class="font-['Fraunces'] text-7xl font-light text-[#D4A59A] mb-4">Zero</p>
-                <p class="text-xl">Animal testing</p>
-            </div>
-        </div>
-    </section>
-
-    <footer class="py-16 px-8 lg:px-16 border-t border-[#2C2C2C]/10">
-        <div class="max-w-[1400px] mx-auto">
-            <div class="grid md:grid-cols-4 gap-12 mb-12">
-                <div>
-                    <h4 class="font-['Fraunces'] text-xl mb-4">Good With Care</h4>
-                    <p class="text-[#8B7F76] leading-relaxed">Gentle skincare, thoughtfully crafted for your skin's unique needs.</p>
-                </div>
-                <div>
-                    <h5 class="font-medium mb-4">Shop</h5>
-                    <ul class="space-y-2 text-[#8B7F76]">
-                        <li><a href="#products" class="hover:text-[#D4A59A] transition-colors duration-300">All Products</a></li>
-                        <li><a href="#" class="hover:text-[#D4A59A] transition-colors duration-300">Bestsellers</a></li>
-                        <li><a href="#" class="hover:text-[#D4A59A] transition-colors duration-300">Gift Sets</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h5 class="font-medium mb-4">Learn</h5>
-                    <ul class="space-y-2 text-[#8B7F76]">
-                        <li><a href="#about" class="hover:text-[#D4A59A] transition-colors duration-300">Our Story</a></li>
-                        <!-- <li><a href="#" class="hover:text-[# -->
-                            <script src="cursor.js"></script>
+   
