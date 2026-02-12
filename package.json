@@ -1,16 +1,6 @@
 {
-  "name": "major-3",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "dev": "npx tailwindcss -i ./input.css -o ./output.css --watch",
-    "build": "npx tailwindcss -i ./input.css -o ./output.css"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "tailwindcss": "^3.4.19"
+  "dependencies": {
+    "@tailwindcss/vite": "^4.1.18",
+    "tailwindcss": "^4.1.18"
   }
 }
