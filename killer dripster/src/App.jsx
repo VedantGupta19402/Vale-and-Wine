@@ -1,7 +1,8 @@
 import React from 'react'
 import Navbar from './components/Navbar'
 import Swipe from './components/Swipe'
-import Sales from './components/sales'
+import Video from './components/Video'
+import Sales from './components/Sales'
 
 
 
@@ -11,7 +12,8 @@ const App = () => {
     <div>
       <Navbar />
       <Swipe />
-      <Sales />
+      <Sales/>
+      <Video />
       
       
     </div>

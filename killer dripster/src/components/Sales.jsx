@@ -1,33 +1,63 @@
 import React from 'react'
 
-const sales = () => {
+const Sales = () => {
   return (
     <div>
-         <div className='h-300 bg-pink-200'>
-      <div className='h-20  bg-green-300 '>
-      
-        <div className='h-10 w-full bg-amber-500 flex items-center justify-center'> <h1>SALES</h1>         </div>
-        <div className='h-10 w-full flex items-center justify-center gap-20'>
+        {/* main */}
+        <div className='min-h-30.5 min-w-99.75 bg-pink-100'>
+            {/* upper section 1 */}
+            
+         <div className='h-10 w-full bg-amber-500 flex items-center justify-center'> 
+            <h1>SALES</h1>        
+          </div>
+          {/* upper sec2 */}
+         <div className='h-10 w-full flex items-center justify-center gap-20'>
           <button className='border-2'>SEE MEN</button>
-          <button>SEE WOMEN</button>
+           <button className='border-2'>SEE WOMEN</button>
+         </div>
+         </div>
+
+{/* main neeche wala */}
+         <div className='min-h-170.5 min-w-99.75 bg-[#DCDAD7] flex justify-around'>
+         {/* 1 div */}
+      <div className='h-160 w-full '>
+        <img src="https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/collection_tile_lM2zjeJ.jpg?w=360&dpr=2" alt="OLD MONEY"/>
         </div>
-  </div>
-  <div className='h-100 bg-cyan-100 flex gap-52'>
-    <div className='min-h-159.5 min-w-159.75 bg-black'>
-      <div className='h-130 w-full bg-amber-300'>
-        <img src="https://i.pinimg.com/1200x/4b/8e/59/4b8e597303b330325e911beea229cf7e.jpg" alt="" />
+
+
+      <div className='h-160 w-full '>
+        <img src="https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/collection_tile_n1mufP1.jpg?w=360&dpr=2" alt="OLD MONEY"/>
         </div>
-        </div> 
-        <div className='min-h-159.5 min-w-159.75 bg-black'></div>
+        </div>
 
-   
-  </div>
+{/* neeche 2 */}
+           <div className='min-h-170.5 min-w-99.75  bg-[#DCDAD7] flex justify-around'>
+         {/* 1 div */}
+      <div className='h-160 w-full'>
+        <img src="https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/Office_big_tile_final.jpg?w=360&dpr=2" alt="OLD MONEY"/>
+        </div>
 
 
+      <div className='h-160 w-full'>
+        <img src="https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/collection-tile_TdbZCtq.jpg?w=360&dpr=2" alt="OLD MONEY"/>
+        </div>
+        </div>
+
+
+
+
+
+
+
+
+
+        </div>
+
+
+
+  
       
-    </div>
-    </div>
-  )
+    )
 }
 
-export default sales
+export default Sales
