@@ -36,7 +36,7 @@ const Hero = () => {
         <p className="text-xs md:text-sm uppercase tracking-[0.2em] text-gray-500 mb-2">
           new drop
         </p>
-        <h1 className="text-2xl md:text-4xl font-bold leading-snug max-w-md mx-auto">
+        <h1 className="text-2xl text-white md:text-4xl font-bold leading-snug max-w-md mx-auto">
           bend time, feel the flow.
         </h1>
         <p className="mt-4 text-gray-400 text-sm md:text-base max-w-sm mx-auto leading-relaxed">
@@ -48,7 +48,7 @@ const Hero = () => {
           <button className="bg-[#00FF88] text-black px-5 py-2.5 rounded-full font-medium text-sm transition-all duration-300 hover:scale-[1.05] hover:shadow-[0_0_15px_#00FF88]">
             Start Journey
           </button>
-          <button className="border border-gray-600 px-5 py-2.5 rounded-full text-sm transition-all duration-300 hover:border-white hover:scale-[1.05]">
+          <button className="border text-white border-gray-600 px-5 py-2.5 rounded-full text-sm transition-all duration-300 hover:border-white hover:scale-[1.05]">
             Explore
           </button>
         </div>
